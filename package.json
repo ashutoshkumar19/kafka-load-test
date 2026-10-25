@@ -1,0 +1,22 @@
+{
+  "name": "kafka-lag-monitor",
+  "version": "1.0.0",
+  "description": "Kafka load-test lag monitor — multi-group × multi-topic, percentiles, CSV, Prometheus, live dashboard",
+  "author": "Ashutosh Kumar",
+  "main": "monitor.js",
+  "scripts": {
+    "start": "node monitor.js",
+    "produce": "node load-producer.js",
+    "dev:single": "KAFKA_CONSUMER_GROUPS=my-group KAFKA_TOPICS=topic-a,topic-b node monitor.js",
+    "dev:matrix": "KAFKA_CONSUMER_GROUPS=group-a,group-b KAFKA_TOPICS=topic-a,topic-b node monitor.js",
+    "dev:prometheus": "PROMETHEUS_ENABLED=true KAFKA_CONSUMER_GROUPS=group-a KAFKA_TOPICS=topic-a node monitor.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "kafkajs": "^2.2.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT"
+}
